@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Recebendo Código de Autorização</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; text-align: center; padding-top: 50px; }
+        .container { background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: inline-block; }
+        h1 { color: #1877f2; }
+        #code { background-color: #e7f3ff; border: 1px solid #cfe2f3; padding: 15px; font-size: 1.2em; font-family: monospace; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quase lá!</h1>
+        <p>Copie o código de autorização abaixo e cole no seu terminal Python:</p>
+        <pre id="code">Carregando código...</pre>
+    </div>
+
+    <script>
+        // Pega os parâmetros da URL atual
+        const params = new URLSearchParams(window.location.search);
+        // Pega o valor do parâmetro 'code'
+        const code = params.get('code');
+
+        const codeElement = document.getElementById('code');
+
+        if (code) {
+            // Se o código existir, mostra na tela
+            codeElement.textContent = code;
+        } else {
+            // Se não, mostra uma mensagem de erro
+            codeElement.textContent = 'ERRO: Código de autorização não foi encontrado na URL.';
+            codeElement.style.color = 'red';
+        }
+    </script>
+</body>
+</html>
